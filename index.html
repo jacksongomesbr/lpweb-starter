@@ -3,16 +3,33 @@
 <head>
   <title>Sistema de Eventos</title>
 </head>
-<body>
+<body onload="mostrarEventos()">
 
 <h1>Eventos</h1>
 <p>A lista a seguir apresenta os eventos atuais:</p>
 
-<ul>
-  <li>XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017</li>
-  <li>XIII Simpósio Brasileiro de Sistemas de Informação - SBSI</li>
-  <li>XXXVII Congresso da Sociedade Brasileira de Computação - CSBC</li>
+<ul id="lista-eventos">
 </ul>
+
+<script>
+
+var eventos = [
+  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
+  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
+  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
+];
+
+function mostrarEventos() {
+  var ul = document.getElementById('lista-eventos');
+
+  for(var i = 0; i < eventos.length; i++) {
+    var evento = eventos[i];
+    var li = document.createElement('li');
+    li.innerHTML = evento;
+    ul.append(li);
+  }
+}
+</script>
 
 </body>
 </html>
