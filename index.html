@@ -14,9 +14,9 @@
 <script>
 
 var eventos = [
-  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
-  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
-  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
+  {id:1,inicio:'12-12-2017',termino:'23-12-2017',nome:'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017'},
+  {id:2,inicio:'12-12-2017',termino:'23-12-2017',nome:'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI'},
+  {id:3,inicio:'12-12-2017',termino:'23-12-2017',nome:'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'}
 ];
 
 function mostrarEventos() {
@@ -25,7 +25,7 @@ function mostrarEventos() {
   for(var i = 0; i < eventos.length; i++) {
     var evento = eventos[i];
     var li = document.createElement('li');
-    li.innerHTML = evento;
+    li.innerHTML = evento.nome+" - "+evento.inicio+" a "+evento.termino;
     ul.append(li);
   }
 }
