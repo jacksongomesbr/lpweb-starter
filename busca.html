@@ -1,0 +1,124 @@
+<!--
+/**
+ * Created by PhpStorm.
+ * User: laercio
+ * Date: 07/02/17
+ * Time: 04:11
+ **/
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onload="mostrarEventos()">
+<form action="index.html">
+    <input type="text" name="busca_nome" id="busca_nome" placeholder="Pesquise por um evento" onKeyUp="mostrarEventos()"><!--Obs onKeyUp é um evento que chama a fução conforme o input recever informações do teclado-->
+    <input type="text" name="busca_data_ini" id="busca_data_ini" placeholder="informe a data inicial" onKeyUp="mostrarEventos()">
+    <input type="text" name="busca_data_fim" id="busca_data_fim" placeholder="informe a data final" onKeyUp="mostrarEventos()">
+</form>
+<hr>
+<div id="lista"></div>
+
+
+<script>
+
+    //Apenas o objeto com as informações dos eventos
+    var eventos = [
+        {
+            id: 1,
+            nome: 'ENCOINFO 2017',
+            inicio: "10/02/2017",
+            fim: '13/02/2017'
+        },
+        {
+            id: 2,
+            nome: 'SBSI',
+            inicio: '10/03/2017',
+            fim: '13/03/2017'
+        },
+        {
+            id: 3,
+            nome: 'CSBC',
+            inicio: '10/04/2017',
+            fim: '13/04/2017'
+        },
+        {
+            id: 4,
+            nome: 'EVENTO TESTE 2',
+            inicio: "10/02/2017",
+            fim: '13/02/2017'
+        },
+        {
+            id: 5,
+            nome: 'EVENTO 3',
+            inicio: '10/03/2017',
+            fim: '13/03/2017'
+        },
+        {
+            id: 6,
+            nome: 'EVENTO 4',
+            inicio: '10/04/2017',
+            fim: '13/04/2017'
+        }
+    ];
+    function mostrarEventos(){
+        var table = document.getElementById('lista'); //Pega o elemento identificado por id="lista"
+        var tabela = document.createElement("table"); //adiciona table ao DOM para mais tarde exibir
+
+        //atribui as variáveis os valores dos inputs usando expressão regular (RegExp)
+        var busca_nome = new RegExp(document.getElementById('busca_nome').value,"igm");
+        var busca_data_ini = new RegExp(document.getElementById('busca_data_ini').value,"igm");
+        var busca_data_fim = new RegExp(document.getElementById('busca_data_fim').value,"igm");
+
+        document.getElementById('lista').innerHTML = '';
+        var result = 0;
+        for(var i = 0; i < eventos.length; i++){
+            var tr = document.createElement('tr');
+            if(eventos[i].nome.match(busca_nome)) { //verifica se o valor passado no input coincide com algum valor na propriedade nome
+                if(eventos[i].inicio.match(busca_data_ini)) { //verifica se o valor passado no input coincide com algum valor na propriedade inicio
+                    if(eventos[i].fim.match(busca_data_fim)) { //verifica se o valor passado no input coincide com algum valor na propriedade Fim
+
+                        var evento = eventos[i]; //exibe as informações no objeto na posição [i]
+
+                        /*cria elementos e referencia a uma variável*/
+                        var id = document.createElement('td');
+                        var nome = document.createElement('td');
+                        var inicio = document.createElement('td');
+                        var fim = document.createElement('td');
+                        /*Fim*/
+                        /*Atribui valores ao DOM*/
+                        id.innerHTML = evento.id;
+                        nome.innerHTML = evento.nome;
+                        inicio.innerHTML = evento.inicio;
+                        fim.innerHTML = evento.fim;
+                        /*Fim*/
+                        /*Exibe valores*/
+                        tr.appendChild(id);
+                        tr.appendChild(nome);
+                        tr.appendChild(inicio);
+                        tr.appendChild(fim);
+                        tabela.appendChild(tr);
+                        /*Fim*/
+                        result = 1; //Caso entre aqui é porque encontrou um resultado e altera o result para 1.
+                    }
+                }
+            }
+        }
+        //Verifica se não encontrou nenhum resultado e exibe uma mensagem.
+        if(result == 0){
+            console.log("nada...");
+            var td = document.createElement('td');
+            td.innerHTML = "Nada encontado";
+            tabela.appendChild(tr);
+            tr.appendChild(td);
+        }
+
+        table.appendChild(tabela);
+    }
+</script>
+
+</body>
+</html>
