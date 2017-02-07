@@ -18,15 +18,36 @@ var eventos = [
   'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
   'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
 ];
+var inicios = [
+	  '01/01/2015',
+	  '02/02/2016',
+	  '03/03/2017'
+	];
+var terminos = [
+	  '02/01/2015',
+	  '03/02/2016',
+	  '04/03/2017'
+	];
 
 function mostrarEventos() {
   var ul = document.getElementById('lista-eventos');
 
   for(var i = 0; i < eventos.length; i++) {
     var evento = eventos[i];
+	var ini = inicios[i];
+	var ter = terminos[i];
+	
     var li = document.createElement('li');
-    li.innerHTML = evento;
-    ul.append(li);
+	var p1 = document.createElement('p');
+	var p2 = document.createElement('p');
+    
+	
+	li.innerHTML = evento;
+    p1.innerHTML = ini;
+	p2.innerHTML = ter;
+	ul.append(li);
+	li.append(p1);
+	li.append(p2);
   }
 }
 </script>
