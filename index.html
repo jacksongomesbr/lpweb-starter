@@ -19,14 +19,29 @@ var eventos = [
   'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
 ];
 
+var dataInicio = [
+	'06/02/2017','07/02/2017','08/02/2017'
+];
+
+var dataFim = [
+	'10/02/2017', '11/02/2017', '12/02/2017'
+]
+
 function mostrarEventos() {
   var ul = document.getElementById('lista-eventos');
 
   for(var i = 0; i < eventos.length; i++) {
     var evento = eventos[i];
     var li = document.createElement('li');
+	var pInicio = document.createElement('p');
+	var pFim = document.createElement('p');
     li.innerHTML = evento;
+	pInicio.innerHTML = dataInicio[i];
+	pFim.innerHTML = dataFim[i];
     ul.append(li);
+	li.append(pInicio);
+	li.append(pFim);
+	
   }
 }
 </script>
