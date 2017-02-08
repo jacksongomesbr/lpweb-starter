@@ -26,7 +26,6 @@ function mostrarEventos() {
 
   for(var i = 0; i < eventos.length; i++) {
     var evento = eventos[i];
-    var dataEvento = dataEventos[i];
     var li = document.createElement('li');
     li.innerHTML = evento.nome + "-" + evento.inicio + " a " + evento.termino;
     ul.append(li);
