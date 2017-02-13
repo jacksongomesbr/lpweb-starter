@@ -7,28 +7,50 @@
 
 <h1>Eventos</h1>
 <p>A lista a seguir apresenta os eventos atuais:</p>
-
-<ul id="lista-eventos">
-</ul>
+<h1>Eventos</h1>
+<hr/>
+<label>Pesquisar</label>
+<input type="text" name="pesquisar" id="filtro">
+<input type="submit" onclick="filtrar()" value="Ok">
+<table>
+	<thead>
+		<th>Id</th><th>Nome</th><th>Data_ini</th><th>Data_fin</th>
+	</thead>
+	<tbody id="body">
+	</tbody>
+</table>
 <p></p>
+
 <script>
-
-var eventos = [
-  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
-  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
-  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
-];
-
+var arr = [
+		{nome:'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',inicio:'9-Maio',termino:'13-Maio'},
+  		{nome:'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',inicio:'9-Maio',termino:'13-Maio'},
+  		{nome:'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC',inicio:'9-Maio',termino:'13-Maio'}
+	];
+	
 function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
+	
 
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento;
-    ul.append(li);
-  }
-}
+  var tb = document.getElementById('body');
+
+  for(var i = 0; i < eventos.length; i++) {
+	.
+	
+	if( $.inArray("Ganho", arr) !== -1 ){
+		alert("encontrei");
+	}else{
+		alert("não encontrado");
+	};
+	var tr=document.creatElement("tr");
+	var tr=document
+	
+    var evento = eventos[i];
+    var li = document.createElement('li');
+
+    //li.innerHTML = evento.nome+"-"+evento.inicio+"a"+"a"+evento.termino;
+    tb.append(li);
+  }
+} 
 </script>
 
 </body>
