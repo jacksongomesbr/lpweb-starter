@@ -1,36 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sistema de Eventos</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body onload="mostrarEventos()">
+<div class="container-fluid">
+  <section>
+    <header>
+      <h1>Eventos</h1>
+    </header>
+    <hr/>
+    <p>A lista a seguir apresenta os eventos atuais:</p>
+    <form id="form">
+      <div class="form-group row">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+          <input type="text" class="form-control" id="txtpesquisa" name="txtpesquisa"/>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+          <input type="button" class="btn btn-success" onclick="pesquisar()" id="btnpesquisa" name="btnpesquisa" value="Pesquisar"/>
+        </div>
+      </div>
+    </form>
+    <div class="table-responsive">
+      <table id="lista-eventos" class="table table-bordered table-striped table-hover">
+      </table>
+    </div>
+  </section>
+</div>
 
-<h1>Eventos</h1>
-<p>A lista a seguir apresenta os eventos atuais:</p>
-
-<ul id="lista-eventos">
-</ul>
 
 <script>
 
-var eventos = [
-  { nome : 'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017', datainicio : '08/03/2017', datafim : '24/03/2017'},
-  { nome : 'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI', datainicio : '25/03/2017', datafim : '29/03/2017'},
-  { nome : 'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC', datainicio : '30/03/2017', datafim : '05/04/2017'}
-];
+  var eventos = [
+    {id: 1, nome : 'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017', datainicio : '08/03/2017', datafim : '24/03/2017'},
+    {id: 2, nome : 'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI', datainicio : '25/03/2017', datafim : '29/03/2017'},
+    {id: 3, nome : 'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC', datainicio : '30/03/2017', datafim : '05/04/2017'}
+  ];
 
-function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
-  var datainicio="30/03/2017";
-  var datafim="05/04/2017";
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento.nome+"<br/>Data Inicio: "+evento.datainicio+"<br/>Data Fim: "+evento.datafim;
-    ul.append(li);
+  function mostrarEventos() {
+    var table = document.getElementById('lista-eventos');
+
+    for(var i = 0; i < eventos.length; i++) {
+      var evento = eventos[i];
+      var camposEvetnos = Object.keys(evento);
+
+      var tr = document.createElement('tr');
+      var thead = document.createElement('thead');
+      for(var j = 0; j < camposEvetnos.length; j++){
+        if(i==0){
+          var th = document.createElement('th');
+          th.innerHTML = camposEvetnos[j];
+          thead.append(th);
+        }
+        var td = document.createElement('td');
+        td.innerHTML = evento[camposEvetnos[j]];
+        tr.append(td);
+      }
+      table.append(thead);
+      table.append(tr);
+    }
   }
-}
+
+  function pesquisar(){
+    limpaTabela();
+    var table = document.getElementById('lista-eventos');
+    var pesquisa = document.getElementById('txtpesquisa').value;
+
+    for(var i = 0; i < eventos.length; i++) {
+      var evento = eventos[i];
+      var camposEvetnos = Object.keys(evento);
+
+      var tr = document.createElement('tr');
+      var thead = document.createElement('thead');
+
+      for(var j = 0; j < camposEvetnos.length; j++){
+        if(i==0){
+          var th = document.createElement('th');
+          th.innerHTML = camposEvetnos[j];
+          thead.append(th);
+        }
+        if(evento.nome.toUpperCase().search(pesquisa.toUpperCase())){
+          var td = document.createElement('td');
+          td.innerHTML = evento[camposEvetnos[j]];
+          tr.append(td);
+        }
+      }
+
+      table.append(thead);
+      table.append(tr);
+    }
+  }
+
+  function limpaTabela(){
+    var table = document.getElementById('lista-eventos');
+    var camposEvetnos = Object.keys(table);
+    for(var i = 0; i < table.length; i++){
+      alert(camposEvetnos[i]);
+      table[camposEvetnos[i]].remove();
+    }
+  }
 </script>
 
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
