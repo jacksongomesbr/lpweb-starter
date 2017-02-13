@@ -6,32 +6,45 @@
 <body onload="mostrarEventos()">
 
 <h1>Eventos</h1>
-<p>A lista a seguir apresenta os eventos atuais:</p>
+<input type="text" name="pesquisa" value=""> 
+<button type="button" class="btn btn-default">Pesquisar</button>
 
-<ul id="lista-eventos">
-</ul>
-<p></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Data Início</th>
+      <th>Data Término</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+    
+  </tbody>
+</table>
+
 <script>
+  var eventos = [
+    {id:1, nome:"XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017",
+    inicio:"9-Maio", termino:"13-Maio"},
+    
+    {id:2, nome:"XIII Simpósio Brasileiro de Sistemas de Informação - SBSI",
+    inicio:"15-Junho", termino:"22-Junho"}
+  ];
 
-var eventos = [
-  {id:1, nome:"XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017",
-  inicio:"9-Maio", termino:"13-Maio"},
-  
-  {id:2, nome:"XIII Simpósio Brasileiro de Sistemas de Informação - SBSI",
-  inicio:"15-Junho", termino:"22-Junho"}
-];
+  function mostrarEventos() {
+    var tBody = document.getElementById('tableBody');
 
-function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
-
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var dataEvento = dataEventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento.nome + "-" + evento.inicio + " a " + evento.termino;
-    ul.append(li);
+    for(var i = 0; i < eventos.length; i++) {
+      var evento = eventos[i];
+      var tr = document.createElement('tr');
+      var td = document.createElement('td');
+      td.innerHTML = evento.id;
+      tr.append(td);
+      tBody.append(tr);
+    }
   }
-}
 </script>
 
 </body>
