@@ -48,5 +48,44 @@ function removerListaEventos(linhas){
   }
 }
 
+function ativarInputDataInicial(){
+  document.getElementById("dataInicialEvento").style.display = "initial";
+  var btnIr = document.createElement("BUTTON");
+  var text = document.createTextNode("Ir");
+  btnIr.appendChild(text);
+  var input =  document.getElementById("dataInicialEvento");
+  document.getElementById("content").insertBefore(input, btnIr); //insertBefore
+}
+function ativarInputDataFinal(){
+  document.getElementById("dataFinalEvento").style.display = "initial";
+}
+
+function getEventoByDataInicial() {
+  var dataInicialEvento = document.getElementById("dataInicialEvento").value;
+  alert("data pesquisada: [" + dataInicialEvento +"]");
+  // var tbody = document.getElementById('lista-eventos');
+  // var linhas = document.getElementsByClassName('eventos-listados');
+  // removerListaEventos(linhas);
+  // for (var j = 0; j < eventos.length; j++) {
+  //   var evento = eventos[j];
+  //   if(evento.nome.toUpperCase().search(nomeEvento.toUpperCase()) != -1){
+  //     var atributosDeEvento = Object.keys(evento);
+  //     var tr = document.createElement('tr');
+  //     tr.className = "eventos-listados";
+  //     for (var k = 0; k < atributosDeEvento.length; k++) {
+  //       var td = document.createElement('td');
+  //       td.innerHTML = evento[atributosDeEvento[k]];
+  //       tr.append(td);
+  //     }
+  //     tbody.append(tr);
+  //   }
+  // }
+}
+
 document.getElementById("btn-pesquisarNome").addEventListener("click", getEventoByNome);
 document.getElementById("nomeEvento").addEventListener("keyup", getEventoByNome);
+
+document.getElementById("btn-pesquisarDataInicial").addEventListener("click", ativarInputDataInicial);
+document.getElementById("btn-pesquisarDataFinal").addEventListener("click", ativarInputDataFinal);
+
+document.getElementById("dataInicialEvento").addEventListener("", getEventoByDataInicial);
