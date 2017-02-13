@@ -21,7 +21,7 @@ function mostrarEventos() {
   }
 }
 
-function buscarEvento(){
+function getEventoByNome(){
   var nomeEvento = document.getElementById("nomeEvento").value;
   // alert("nome pesquisado: [" + nomeEvento +"]");
   var tbody = document.getElementById('lista-eventos');
@@ -48,5 +48,5 @@ function removerListaEventos(linhas){
   }
 }
 
-document.getElementById("btn-pesquisar").addEventListener("click", buscarEvento);
-document.getElementById("nomeEvento").addEventListener("keyup", buscarEvento);
+document.getElementById("btn-pesquisarNome").addEventListener("click", getEventoByNome);
+document.getElementById("nomeEvento").addEventListener("keyup", getEventoByNome);
