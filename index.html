@@ -1,35 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
+  <meta charset="utf-8"/>
   <title>Sistema de Eventos</title>
 </head>
-<body onload="mostrarEventos()">
+<body>
 
-<h1>Eventos</h1>
-<p>A lista a seguir apresenta os eventos atuais:</p>
+  <h1>Eventos</h1>
+  <p>A lista a seguir apresenta os eventos atuais:</p>
 
-<ul id="lista-eventos">
-</ul>
+  <section id="selecao-forma-pesquisa">
+    <p>
+      <b>Escolha a forma de pesquisa:</b>
+    </p>
+    <form>
+      <input type="radio" name="gender" onclick="verificaMetodoPesq()" checked id="rbt-nome"> Nome do Evento<br/>
+      <input type="radio" name="gender" onclick="verificaMetodoPesq()" id="rbt-dataI"> Data de Inicio<br/>
+      <input type="radio" name="gender" onclick="verificaMetodoPesq()" id="rbt-dataT"> Data de Término<br/><br/>
+    </form>
+  </section>
 
-<script>
+  <section id="foms-pesquisa">
+    <form id="pesq-nome">
+      Pesquisar: <input type="text" id='pesquisa' name="pesquisa" onkeyup="pesquisar()"><br/><br/>
+    </form>
 
-var eventos = [
-  {id:1,inicio:'12-12-2017',termino:'23-12-2017',nome:'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017'},
-  {id:2,inicio:'12-12-2017',termino:'23-12-2017',nome:'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI'},
-  {id:3,inicio:'12-12-2017',termino:'23-12-2017',nome:'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'}
-];
+    <form id="pesq-dataI">
+      Data Inicio:
+      <input type="date" name="dataInicio">
+      <input type="submit">
+    </form>
+    <br/>
+    <form id="pesq-dataT">
+      Data Término:
+      <input type="date" name="dataInicio">
+      <input type="submit">
+    </form>
 
-function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
 
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento.nome+" - "+evento.inicio+" a "+evento.termino;
-    ul.append(li);
-  }
-}
-</script>
+    <br/><br/>
+  </section>
+
+  <section id="tabela-eventos">
+    <table border=1>
+      <tbody id="lista-eventos">
+        <tr>
+          <th>Id</th>
+          <th>Data Inicio</th>
+          <th>Data Término</th>
+          <th>Nome</th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
 </body>
+<script type="text/javascript" src="js/index.js"></script>
 </html>
