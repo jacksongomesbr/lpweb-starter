@@ -13,7 +13,7 @@
     </header>
     <hr/>
     <p>A lista a seguir apresenta os eventos atuais:</p>
-    <form id="form">
+    <form id="form" method="post">
       <div class="form-group row">
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
           <input type="text" class="form-control" id="txtpesquisa" name="txtpesquisa"/>
@@ -58,47 +58,40 @@
         td.innerHTML = evento[camposEvetnos[j]];
         tr.append(td);
       }
-      table.append(thead);
+
+      if(i==0){
+        table.append(thead);
+      }
       table.append(tr);
     }
   }
 
+
+
   function pesquisar(){
-    limpaTabela();
     var table = document.getElementById('lista-eventos');
     var pesquisa = document.getElementById('txtpesquisa').value;
-
+    limpaTabela();
     for(var i = 0; i < eventos.length; i++) {
       var evento = eventos[i];
       var camposEvetnos = Object.keys(evento);
-
       var tr = document.createElement('tr');
-      var thead = document.createElement('thead');
 
-      for(var j = 0; j < camposEvetnos.length; j++){
-        if(i==0){
-          var th = document.createElement('th');
-          th.innerHTML = camposEvetnos[j];
-          thead.append(th);
-        }
-        if(evento.nome.toUpperCase().search(pesquisa.toUpperCase())){
+      if(evento.nome.toUpperCase().indexOf(pesquisa.toUpperCase()) != -1){
+        for(var j = 0; j < camposEvetnos.length; j++){
           var td = document.createElement('td');
           td.innerHTML = evento[camposEvetnos[j]];
           tr.append(td);
         }
       }
-
-      table.append(thead);
       table.append(tr);
     }
   }
 
   function limpaTabela(){
     var table = document.getElementById('lista-eventos');
-    var camposEvetnos = Object.keys(table);
-    for(var i = 0; i < table.length; i++){
-      alert(camposEvetnos[i]);
-      table[camposEvetnos[i]].remove();
+    while (table.rows.length > 0){
+      table.deleteRow(0);
     }
   }
 </script>
