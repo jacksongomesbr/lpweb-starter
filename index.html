@@ -3,14 +3,35 @@
 <head>
   <title>Sistema de Eventos</title>
 </head>
-<body onload="mostrarEventos()">
+<body onload="filtro()">
 
-<h1>Teste -01<h1>
+
 <p>A lista a seguir apresenta os eventos atuais:</p>
 
 <ul id="lista-eventos">
 </ul>
 <p></p>
+
+
+<form name="input">
+Nome do Usuário: 
+<input type="text" name="busca">
+<input type="submit" value="filtrar" onclick="filtro()">
+</form>
+<br>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+	  <th>Data Inicio</th>
+	  <th>Data Fim</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+  </tbody>
+</table>
 <script>
 
 var eventos = [
@@ -18,6 +39,19 @@ var eventos = [
   'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
   'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
 ];
+
+function filtro(){
+ var tb = document.getElementById('tbody');
+ for(var i = 0; i < eventos.length; i++) {
+    var evento = eventos[i];
+    var tr = document.createElement('tr');
+	var td = document.createElement('td');
+    td.innerHTML = evento;
+    tb.append(tr);
+	tb.append(td);
+  }
+
+}
 
 function mostrarEventos() {
   var ul = document.getElementById('lista-eventos');
