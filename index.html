@@ -6,11 +6,11 @@
 <body onload="mostrarEventos()">
 
 <h1>Eventos</h1>
-<input type="text" name="pesquisa" value=""> 
-<button type="button" class="btn btn-default">Pesquisar</button>
+<input type="text" name="pesquisa" value="" id="filtro"> 
+<button type="button" class="btn btn-default" onclick="pesquisar()">Pesquisar</button>
 
 
-<table>
+<table border="1px">
   <thead>
     <tr>
       <th>Id</th>
@@ -42,7 +42,21 @@
       var td = document.createElement('td');
       td.innerHTML = evento.id;
       tr.append(td);
+      var td2 = document.createElement('td');
+      td2.innerHTML = evento.nome;
+      tr.append(td2);
+      var td3 = document.createElement('td');
+      td3.innerHTML = evento.inicio;
+      tr.append(td3);
+      var td4 = document.createElement('td');
+      td4.innerHTML = evento.termino;
+      tr.append(td4);
       tBody.append(tr);
+    }
+    function pesquisar()
+    {
+      var f = document.getElementById("filtro");
+      var filtro = f.value;
     }
   }
 </script>
