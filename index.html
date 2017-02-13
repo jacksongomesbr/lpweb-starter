@@ -35,22 +35,26 @@ Nome do Usuário:
 <script>
 
 var eventos = [
-  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
-  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
-  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
+{id:1,nome:"congresso", des:"XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017"},
+{id:2,nome:"congresso", des:"XIII Simpósio Brasileiro de Sistemas de Informação - SBSI"},
+{id:3,nome:"congresso", des:"XXXVII Congresso da Sociedade Brasileira de Computação - CSBC"},
 ];
 
 function filtro(){
  var tb = document.getElementById('tbody');
  for(var i = 0; i < eventos.length; i++) {
     var evento = eventos[i];
-    var tr = document.createElement('tr');
-	var td = document.createElement('td');
-    td.innerHTML = evento;
-    tb.append(tr);
+	var tr = document.createElement('tr');
+	tb.append(tr);
+	for (var b = 0; b < 2 ; b++){  
+	var td0 = document.createElement('td');
+	td.innerHTML = evento.nome;
+	var td1 = document.createElement('td');
+	td1.innerHTML = evento.des;
+	var td2 = document.createElement('td');
+    td2.innerHTML = evento.des;
 	tb.append(td);
-  }
-
+	}
 }
 
 function mostrarEventos() {
