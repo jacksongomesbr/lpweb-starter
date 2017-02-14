@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt_br">
-<head>
-  <title>Sistema de Eventos</title>
-</head>
-<body onload="mostrarEventos()">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Lista de Eventos</title>
+		<link rel="stylesheet" href="css/index.css">
+		
+	</head>
 
-<h1>Eventos</h1>
-<p>A lista a seguir apresenta os eventos atuais:</p>
+	<body onload = "mostrarEventos()">
 
-<ul id="lista-eventos">
-</ul>
-<p></p>
-<script>
+		
+		<div class="row">
+			<div class="col-12">
+				<input type="text" id="entradaPesquisa" placeholder="Procure um evento">
+				<input type="button" value="OK" onclick="pesquisarTabela()">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-12">
+				<table id="tabela-eventos">
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Data Início</th>
+						<th>Data Final</th>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript" src="js/index.js"></script>
 
-var eventos = [
-  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
-  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
-  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
-];
-
-function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
-
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento;
-    ul.append(li);
-  }
-}
-</script>
-
-</body>
+	</body>
 </html>
