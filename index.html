@@ -2,34 +2,51 @@
 <html lang="pt_br">
 <head>
   <title>Sistema de Eventos</title>
+  <meta charset="utf-8" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="css/index.css" rel="stylesheet">
 </head>
 <body onload="mostrarEventos()">
 
 <h1>Eventos</h1>
-<p>A lista a seguir apresenta os eventos atuais:</p>
+<hr  />
 
-<ul id="lista-eventos">
-</ul>
-<p></p>
-<script>
+<section id="buscas">
+  <form id="content" class="col-md-8">
+    <h3>Pesquisar por Nome</h3>
+    <input type="text" class="input" id="nomeEvento" placeholder="Nome do Evento"/>
+    <button type="reset" id="btn-pesquisarNome">Pesquisar</button>
+    <br/><br/>
+    <button type="reset" id="btn-pesquisarDataInicial" class="">Data Inicial</button>
+    <input type="date" id="dataInicialEvento" style="display : none" />
+    <br/><br/>
+    <button type="reset" id="btn-pesquisarDataFinal">Data Final</button>
+    <input type="date" id="dataFinalEvento" style="display : none" />
+  </form>
+</section>
 
-var eventos = [
-  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
-  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
-  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
-];
+<div class="table-responsive col-md-8">
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <th> ID </th>
+      <th> Nome do Evento </th>
+      <th> Data Inicial </th>
+      <th> Data Final </th>
 
-function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
-
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento;
-    ul.append(li);
-  }
-}
-</script>
+    </thead>
+    <tbody id="lista-eventos">
+    </tbody>
+    <tfoot>
+      <th> ID </th>
+      <th> Nome do Evento </th>
+      <th> Data Inicial </th>
+      <th> Data Final </th>
+    </tfoot>
+  </table>
+</div>
 
 </body>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>
