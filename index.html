@@ -8,28 +8,50 @@
 <h1>Eventos</h1>
 <p>A lista a seguir apresenta os eventos atuais:</p>
 
-<ul id="lista-eventos">
-</ul>
-<p></p>
-<script>
+  <section id="selecao-forma-pesquisa">
+    <p>
+      <b>Escolha a forma de pesquisa:</b>
+    </p>
+    <form>
+      <input type="radio" name="gender" onclick="verificaMetodoPesq()" checked id="rbt-nome"> Nome do Evento<br/>
+      <input type="radio" name="gender" onclick="verificaMetodoPesq()" id="rbt-dataI"> Data de Inicio<br/>
+      <input type="radio" name="gender" onclick="verificaMetodoPesq()" id="rbt-dataT"> Data de Término<br/><br/>
+    </form>
+  </section>
 
-var eventos = [
-  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
-  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
-  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
-];
+  <section id="foms-pesquisa">
+    <form id="pesq-nome">
+      Pesquisar: <input type="text" id='pesquisa' name="pesquisa"><button type="button" onclick="pesquisar()">Pesquisar</button><br/><br/>
+    </form>
 
-function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
+    <form id="pesq-dataI">
+      Data Inicio:
+      <input type="date" name="dataInicio" id="ipt-dataI">
+      <input type="submit" onclick="pesquisa-dataI">
+    </form>
+    <br/>
+    <form id="pesq-dataT">
+      Data Término:
+      <input type="date" name="dataInicio" id="ipt-dataT">
+      <input type="submit" onclick="pesquisa-dataF">
+    </form>
 
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento;
-    ul.append(li);
-  }
-}
-</script>
 
+    <br/><br/>
+  </section>
+
+  <section id="tabela-eventos">
+    <table border=1>
+      <tbody id="lista-eventos">
+        <tr>
+          <th>Id</th>
+          <th>Data Inicio</th>
+          <th>Data Término</th>
+          <th>Nome</th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
