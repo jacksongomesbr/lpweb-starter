@@ -21,19 +21,19 @@
 
   <section id="foms-pesquisa">
     <form id="pesq-nome">
-      Pesquisar: <input type="text" id='pesquisa' name="pesquisa" onkeyup="pesquisar()"><br/><br/>
+      Pesquisar: <input type="text" id='pesquisa' name="pesquisa"><button type="button" onclick="pesquisar()">Pesquisar</button><br/><br/>
     </form>
 
     <form id="pesq-dataI">
       Data Inicio:
-      <input type="date" name="dataInicio">
-      <input type="submit">
+      <input type="date" name="dataInicio" id="ipt-dataI">
+      <input type="submit" onclick="pesquisa-dataI">
     </form>
     <br/>
     <form id="pesq-dataT">
       Data Término:
-      <input type="date" name="dataInicio">
-      <input type="submit">
+      <input type="date" name="dataInicio" id="ipt-dataT">
+      <input type="submit" onclick="pesquisa-dataF">
     </form>
 
 
