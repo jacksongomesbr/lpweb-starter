@@ -6,29 +6,59 @@
 <body onload="mostrarEventos()">
 
 <h1>Eventos</h1>
-<p>A lista a seguir apresenta os eventos atuais:</p>
+<input type="text" name="pesquisa" value="" id="filtro"> 
+<button type="button" class="btn btn-default" onclick="pesquisar()">Pesquisar</button>
 
-<ul id="lista-eventos">
-</ul>
-<p></p>
+
+<table border="1px">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Data Início</th>
+      <th>Data Término</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+    
+  </tbody>
+</table>
+
 <script>
+  var eventos = [
+    {id:1, nome:"XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017",
+    inicio:"9-Maio", termino:"13-Maio"},
+    
+    {id:2, nome:"XIII Simpósio Brasileiro de Sistemas de Informação - SBSI",
+    inicio:"15-Junho", termino:"22-Junho"}
+  ];
 
-var eventos = [
-  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
-  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
-  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
-];
+  function mostrarEventos() {
+    var tBody = document.getElementById('tableBody');
 
-function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
-
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento;
-    ul.append(li);
+    for(var i = 0; i < eventos.length; i++) {
+      var evento = eventos[i];
+      var tr = document.createElement('tr');
+      var td = document.createElement('td');
+      td.innerHTML = evento.id;
+      tr.append(td);
+      var td2 = document.createElement('td');
+      td2.innerHTML = evento.nome;
+      tr.append(td2);
+      var td3 = document.createElement('td');
+      td3.innerHTML = evento.inicio;
+      tr.append(td3);
+      var td4 = document.createElement('td');
+      td4.innerHTML = evento.termino;
+      tr.append(td4);
+      tBody.append(tr);
+    }
+    function pesquisar()
+    {
+      var f = document.getElementById("filtro");
+      var filtro = f.value;
+    }
   }
-}
 </script>
 
 </body>
