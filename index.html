@@ -1,35 +1,58 @@
-<!DOCTYPE html>
-<html lang="pt_br">
-<head>
-  <title>Sistema de Eventos</title>
-</head>
-<body onload="mostrarEventos()">
-
-<h1>Eventos</h1>
-<p>A lista a seguir apresenta os eventos atuais:</p>
-
-<ul id="lista-eventos">
-</ul>
-<p></p>
-<script>
-
-var eventos = [
-  'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017',
-  'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI',
-  'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC'
-];
-
-function mostrarEventos() {
-  var ul = document.getElementById('lista-eventos');
-
-  for(var i = 0; i < eventos.length; i++) {
-    var evento = eventos[i];
-    var li = document.createElement('li');
-    li.innerHTML = evento;
-    ul.append(li);
-  }
-}
-</script>
-
-</body>
+<html>
+    <head>
+        <title>Lista Eventos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 align="center">Lista Evento</h1></br></br>
+        <form>
+            <label for="Buscar:">Busque um evento: </label>
+            <input type="text" name="NomeEvento">
+            <input type="button" name="OK" value="OK"></br></br>
+        </form>
+        
+        <table border="1">
+            <thead>
+            <tr>
+                <td WIDTH=80>ID</td>
+                <td WIDTH=350>Nome</td>
+                <td WIDTH=350>Data Início</td>
+                <td WIDTH=350>Data Final</td>
+            </tr>
+            </thead>
+            <tbody id="tbody" onload="mostrarEventos()">
+                
+            </tbody>
+        </table>
+        <script>
+            var eventos = [
+                {nome: 'XIX Congresso de Computação e Sistemas de Informação - ENCOINFO 2017', DataInicio: '01/02/2017', DataTermino: '10/02/2017'},
+                {nome: 'XIII Simpósio Brasileiro de Sistemas de Informação - SBSI', DataInicio: '10/02/2017', DataTermino: '30/02/2017'},
+                {nome: 'XXXVII Congresso da Sociedade Brasileira de Computação - CSBC', DataInicio: '02/02/2017', DataTermino: '10/03/2017'}
+            ];
+            function mostrarEventos() {
+                var tbody = document.getElementById('tbody');
+                for (var i = 0; i < eventos.length; i++) {
+                    var evento = eventos[i];
+                    var tr = document.createElement('tr');
+                    var tdId=document.createElement('tr');
+                    var tdNome=document.createElement('td');
+                    var tdDataInicio=document.createElement('td');
+                    var tdDataTermino=document.createElement('td');
+                    tdId.innerHTML=i;
+                    tdNome.innerHTML = evento.nome;
+                    tdDataInicio.innerHTML=evento.DataInicio;
+                    tdDataTermino.innerHTML=evento.DataTermino;
+                    tr.append(tdId);
+                    tr.append(tdNome);
+                    tr.append(tdDataInicio);
+                    tr.append(tdDataTermino);
+                    tbody.append(tr);
+                }
+                
+            }
+            mostrarEventos();
+        </script>
+    </body>
 </html>
